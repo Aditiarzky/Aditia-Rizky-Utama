@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roti Raya - menghadirkan kualitas dan kelezatan roti segar untuk setiap momen, dengan sentuhan
+      rasa lokal yang otentik.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Prociono&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>document.documentElement.classList.add('js')</script>
+    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
+    <style>
+      html, body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .main-content{
+        background-image: url(bg-1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .section-1{
+        background-image: url(section-1.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .icon-1{
+        background-image: url(icon.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .font-playfair{
+        font-family: "Playfair Display", serif;
+      }
+      .font-prociono{
+        font-family: "Prociono", serif;
+      }
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+      .carousel-item {
+        flex: 0 0 100%;
+      }
+      .hg::before {
+        content: '|';
+        margin-right: 0.5rem;
+        color: #b65000; /* Sesuaikan warna garis */
+        font-weight: bold;
+      }
+      nav p{
+        cursor: pointer;
+      }
+      nav p:hover{
+        text-decoration: underline;
+      }
+      /* Default hidden state dengan transisi */
+      .section {
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      /* State saat section sedang aktif */
+      .section.active {
+        opacity: 1;
+        transform: translateX(0);
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Untuk menggeser keluar ke kanan saat disembunyikan */
+      .section.slide-out {
+        transform: translateX(100%);
+        opacity: 0;
+        position: absolute;
+      }
+      summary{
+        font-size: x-large;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+  <div class="main-content fixed w-full h-screen"></div>
+    <div class="font-prociono w-full relative">
+
+        <nav
+          class="flex z-20 sticky w-full h-[79px] absolute left-0 top-0 px-[50px] py-[30px] bg-white/80 backdrop-blur-[10px]"
+        >
+        <div class="container mx-auto flex justify-between items-center ">
+          <div class="icon-1 h-16 w-20 flex justify-start items-end flex-grow-0 flex-shrink-0 relative">
+          </div>
+          <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 gap-6 relative">
+            <a href="#xhome" class="flex-grow-0 flex-shrink-0 text-xl text-center text-[#daa580]">Home</a>
+            <a href="#xproduk" class="flex-grow-0 flex-shrink-0 text-xl text-center text-[#daa580]">Produk</a>
+            <a href="#xlayanan" class="flex-grow-0 flex-shrink-0 text-xl text-center text-[#daa580]">
+              Layanan
+            </a>
+            <p class="flex-grow-0 flex-shrink-0 text-xl text-center text-[#daa580]">
+              Pemesanan
+            </p>
+          </div>
+        </div>
+        </nav>
+
+        <!-- Home -->
+        
+      <section id="xhome" class="">
+        <div
+          class=" border-b-[16px] border-b-[#b65000] flex flex-col justify-center items-center w-full h-[45rem] left-0 gap-[30px]"
+        >
+          <div class="section-1 brightness-50 h-[45rem] w-full absolute"></div>
+          <div class="z-10">
+            <p class="font-playfair flex-grow-0 flex-shrink-0 w-full h-[97px] text-[64px] text-center">
+              <span class="flex-grow-0 flex-shrink-0 w-[696px] h-[97px] text-[64px] bg-clip-text text-transparent bg-gradient-to-r from-white to-[#DAA580] text-center">Roti Raya</span><br />
+            </p>
+            <p class="flex-grow-0 flex-shrink-0 w-[648px] text-4xl text-center text-white">
+              Menghadirkan Roti Premium dengan Rasa Lokal
+            </p>
+          </div>
+          <div
+              class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[5px] px-5 py-2.5 rounded-lg bg-[#b65000]"
+              style="box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.5);"
+            >
+              <p
+                class="flex-grow-0 flex-shrink-0 text-xl font-medium text-center capitalize text-[#edddcf]"
+              >
+                Pesan Sekarang
+              </p>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <path
+                  d="M16.175 13H4V11H16.175L10.575 5.4L12 4L20 12L12 20L10.575 18.6L16.175 13Z"
+                  fill="#DAA580"
+                ></path>
+              </svg>
+            </div>
+        </div>
+      <div
+        class="flex justify-center absolute w-full items-center top-[748px] gap-2.5 p-2.5"
+      >
+      <div class=" bg-[#b65000] ">
+        <p class="flex-grow-0 p-2 flex-shrink-0 w-[261px] text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-[#DAA580] text-center">Visi & Misi</p>
+      </div>
+      </div>
+        <div class="w-full flex justify-center mt-16 items-center  h-[441px]">
+          <div class="flex justify-start items-center left-[387px] top-[855px]">
+            <div
+              class="flex justify-center items-start flex-grow-0 flex-shrink-0 h-[441px] gap-2.5 py-2.5 delay-[300ms] duration-[600ms] taos:translate-y-[100px] taos:opacity-0" data-taos-offset="5"
+            >
+              <div
+                class="flex flex-col justify-start items-end flex-grow-0 flex-shrink-0 w-[294px] relative"
+              >
+                <div
+                  class="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 h-[250px] rounded-tl-2xl relative gap-2.5 px-5 py-2.5 bg-[#b65000]/80"
+                >
+                  <p class="self-stretch flex-grow w-[254px] h-[293px] text-2xl text-center capitalize">
+                    <span
+                      class="self-stretch flex-grow w-[254px] h-[293px] text-2xl text-center capitalize text-[#daa580]/80"
+                      >Visi kami </span
+                    ><br /><span
+                      class="self-stretch p-2 flex-grow w-[254px] h-[293px] text-xl text-center capitalize text-white"
+                      >menghadirkan kualitas dan kelezatan roti segar untuk setiap momen, dengan sentuhan
+                      rasa lokal yang otentik. </span
+                    ><br /><br />
+                  </p>
+                </div>
+                <div class="flex-grow-0 flex-shrink-0 w-[280px] h-[13px] bg-[#daa580]/80"></div>
+              </div>
+            </div>
+            <div class="flex justify-center items-end flex-grow-0 flex-shrink-0 h-[441px] gap-2.5 py-2.5 delay-[400ms] duration-[600ms] taos:translate-y-[100px] taos:opacity-0" data-taos-offset="50">
+              <div
+                class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[358px] relative"
+              >
+                <div class="flex-grow-0 flex-shrink-0 w-[347px] h-[13px] bg-[#daa580]/80"></div>
+                <div
+                  class="flex justify-center items-center self-stretch flex-grow-0 rounded-br-2xl flex-shrink-0 h-[394px] relative gap-2.5 px-5 py-2.5 bg-[#b65000]/80"
+                >
+                  <p class="self-stretch p-2 flex-grow w-[318px] h-[374px] text-xl text-center capitalize">
+                    <span
+                      class="self-stretch flex-grow w-[318px] h-[374px] text-2xl text-center capitalize text-[#daa580]/80"
+                      >Misi kami</span
+                    ><span
+                      class="self-stretch flex-grow w-[318px] h-[374px] text-xl text-center capitalize text-white"
+                    >
+                    </span
+                    ><br /><span
+                      class="self-stretch flex-grow w-[318px] h-[374px] text-xl text-center capitalize text-white"
+                      >menyediakan roti segar berkualitas setiap hari, dengan bahan-bahan alami dan
+                      pilihan terbaik. Kami berupaya memberikan pengalaman kuliner yang hangat dan penuh
+                      keakraban, menciptakan kenangan manis bagi setiap pelanggan yang menikmati produk
+                      kami.</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product -->
+
+      <section id="xproduk" class="">
+        <div
+          class="flex container mx-auto z-10 justify-end absolute w-full items-center mt-7 top-[83rem] gap-2.5 p-2.5"
+        >
+        <div class="">
+          <p class="flex-grow-0 w-full font-semibold font-playfair p-2 flex-shrink-0 text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-[#DAA580] text-center">Produk Populer</p>
+        </div>
+        </div>
+        <div class="container mx-auto mt-14 px-5 py-10">
+
+            <div class="relative w-full rounded-tl-3xl rounded-br-3xl overflow-hidden">
+                <!-- Carousel Container -->
+                <div class="carousel flex">
+                    <!-- Carousel Item 1 -->
+                    <div class="carousel-item flex-shrink-0 w-full h-[300px] bg-cover bg-center" style="background-image: url('https://image.makewebeasy.net/makeweb/m_1920x0/rGAbosWut/DefaultData/premium_raisin_1.jpg');">
+                        <div class="bg-black/40 w-full h-full flex flex-col items-center justify-center text-center text-white p-4">
+                            <h2 class="text-3xl font-bold mb-2">Roti Tawar Premium</h2>
+                            <p class="text-lg">Rp15.000</p>
+                        </div>
+                    </div>
+                    <!-- Carousel Item 2 -->
+                    <div class="carousel-item flex-shrink-0 w-full h-[300px] bg-cover bg-center" style="background-image: url('https://img-global.cpcdn.com/recipes/d4eafa467f544942/680x482cq70/roti-gandum-kukus-foto-resep-utama.jpg');">
+                        <div class="bg-black/40 w-full h-full flex flex-col items-center justify-center text-center text-white p-4">
+                            <h2 class="text-3xl font-bold mb-2">Roti Gandum</h2>
+                            <p class="text-lg">Rp20.000</p>
+                        </div>
+                    </div>
+                    <!-- Carousel Item 3 -->
+                    <div class="carousel-item flex-shrink-0 w-full h-[300px] bg-cover bg-center" style="background-image: url('https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/07/11/Screenshot_2023-07-11-07-49-59-88_f9ee0578fe1cc94de7482bd41accb329-212416634.jpg');">
+                        <div class="bg-black/40 w-full h-full flex flex-col items-center justify-center text-center text-white p-4">
+                            <h2 class="text-3xl font-bold mb-2">Roti Isi Cokelat</h2>
+                            <p class="text-lg">Rp12.000</p>
+                        </div>
+                    </div>
+                </div>
+              
+                <!-- Carousel Controls -->
+                <button id="prevButton" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-[#b65000]/20 text-white p-3 rounded-full shadow-md hover:bg-[#a14c00] transition">
+                    &#10094;
+                </button>
+                <button id="nextButton" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-[#b65000]/20 text-white p-3 rounded-full shadow-md hover:bg-[#a14c00] transition">
+                    &#10095;
+                </button>
+            </div>
+                <!-- Section Header -->
+   
+        </div>
+
+        <div class="flex w-full bg-[#b65000] p-10 gap-14 justify-center items-center">
+          <img src="banner-1.webp" alt="banner 1" class="w-[25rem] h-auto">
+          <img src="banner-2.webp" alt="banner 2" class="w-[25rem] h-auto">
+        </div>
+
+        <div class="py-8 absolute top-[121rem] bg-clip-text text-transparent bg-gradient-to-r to-white from-[#b65000]  text-end mx-auto container">
+          <h1 class="text-6xl font-playfair font-bold">Daftar Produk</h1>
+          <p class="">Temukan roti pilihan kami yang lezat</p>
+        </div>
+      
+        <!-- Produk Grid -->
+        <div id="product-list" class="space-y-8 mt-10 border-y-[2rem] border-y-[#daa580]/80 bg-[#b65000]/80 p-14">
+          <script>
+            const products = [
+                {
+                    image: "https://image.makewebeasy.net/makeweb/m_1920x0/rGAbosWut/DefaultData/premium_raisin_1.jpg",
+                    alt: "Roti Gandum",
+                    title: "Roti Tawar Premium",
+                    description: "Roti tawar sehat dengan rasa yang lezat, cocok untuk sarapan atau camilan.",
+                    tipe: "Roti tawar",
+                    price: "Rp 20.000"
+                },
+                {
+                    image: "https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/07/11/Screenshot_2023-07-11-07-49-59-88_f9ee0578fe1cc94de7482bd41accb329-212416634.jpg",
+                    alt: "Roti isi Coklat",
+                    title: "Roti Isi Coklat",
+                    description: "Roti dengan isian coklat manis, lembut di dalam, dan renyah di luar.",
+                    tipe: "Roti isi",
+                    price: "Rp 18.000"
+                },
+                {
+                    image: "https://img-global.cpcdn.com/recipes/d4eafa467f544942/680x482cq70/roti-gandum-kukus-foto-resep-utama.jpg",
+                    alt: "Roti Gandum Premium",
+                    title: "Roti Gandum Premium",
+                    description: "Roti gandum sehat dengan rasa yang lezat, cocok untuk sarapan atau camilan.",
+                    tipe: "Roti gandum",
+                    price: "Rp 22.000"
+                },
+                {
+                    image: "https://img-global.cpcdn.com/recipes/491b267c0abd8861/1200x630cq70/photo.jpg",
+                    alt: "Roti Sosis",
+                    title: "Roti Sosis",
+                    tipe: "Roti Isi",
+                    description: "Roti panggang yang diisi dengan sosis pilihan dan bumbu rempah.",
+                    price: "Rp 22.000"
+                }
+            ];
+    
+            const productList = document.getElementById("product-list");
+    
+            products.forEach(product => {
+                const productItem = document.createElement("div");
+                productItem.classList.add("flex", "items-center", "gap-6", "container", "mx-auto");
+    
+                productItem.innerHTML = `
+                    <div class="flex items-center gap-6 delay-[300ms] duration-[600ms] taos:translate-y-[100px] taos:opacity-0" data-taos-offset="5" >
+                    <img src="${product.image}" alt="${product.alt}" class="w-64 h-32 object-cover rounded-tl-2xl rounded-br-2xl">
+                    <div>
+                        <h3 class="text-3xl font-bold font-playfair text-gray-100">${product.title}</h3>
+                        <p class="text-lg text-gray-100">${product.description}</p>
+                        <p class="text-lg text-gray-100">Tipe: ${product.tipe}</p>
+                        <p class="text-xl font-serif font-semibold text-[#daa580] mt-2">${product.price}</p>
+                    </div>
+                    </div>
+                `;
+    
+                productList.appendChild(productItem);
+            });
+        </script>
+        </div>
+      </section>
+
+      <!-- Layanan -->
+
+      <section id="xlayanan" class="font-serif pt-16 mx-auto flex justify-center">
+        <div
+        class="flex z-10 container pr-[24%] top-[177rem] absolute justify-end top-24 gap-2.5 p-2.5"
+      >
+        <p class="flex-grow-0 font-semibold font-playfair p-2 flex-shrink-0 text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-[#DAA580] text-center">Layanan Kami</p>
+      </div>
+        <div class="bg-[#b65000]/80 p-8 rounded-br-3xl rounded-tl-3xl shadow-md w-full max-w-2xl space-y-8">  
+          <!-- Address and Opening Hours -->
+          <div class="flex flex-col md:flex-row justify-between gap-8">
+
+              <div class=" text-white p-6 text-lg rounded-lg w-full md:w-1/2">
+                  <h2 class="text-2xl font-playfair font-semibold text-[#daa580] mb-4 flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 3a5 5 0 015 5c0 3.5-5 9-5 9s-5-5.5-5-9a5 5 0 015-5zm0 7a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd" />
+                      </svg>
+                      Alamat
+                  </h2>
+                  <p>Jl. Raya Jepara - Kudus No.23-21, Panggang III, Panggang, Kec. Jepara, Kabupaten Jepara, Jawa Tengah 59412</p>
+              </div>
+  
+              <!-- Opening Hours -->
+              <div class=" text-white p-6 text-lg rounded-lg w-full md:w-1/2">
+                  <h2 class="text-2xl font-playfair font-semibold text-[#daa580] mb-4 flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 9V4h2v5H9zm0 6h2v-2H9v2z" clip-rule="evenodd" />
+                      </svg>
+                      Jadwal Buka
+                  </h2>
+                  <ul class="space-y-1">
+                      <li class="flex justify-between"><span>Senin</span><span>9:00 AM - 5:00 PM</span></li>
+                      <li class="flex justify-between"><span>Selasa</span><span>9:00 AM - 5:00 PM</span></li>
+                      <li class="flex justify-between"><span>Rabu</span><span>9:00 AM - 5:00 PM</span></li>
+                      <li class="flex justify-between"><span>Kamis</span><span>9:00 AM - 5:00 PM</span></li>
+                      <li class="flex justify-between"><span>Jumat</span><span>9:00 AM - 5:00 PM</span></li>
+                      <li class="flex justify-between"><span>Sabtu</span><span>10:00 AM - 4:00 PM</span></li>
+                      <li class="flex justify-between"><span>Minggu</span><span>Closed</span></li>
+                  </ul>
+              </div>
+          </div>
+  
+          <!-- Available Outlets -->
+          <div class=" text-white p-6 text-lg rounded-lg">
+              <h2 class="text-2xl font-playfair font-semibold text-[#daa580] mb-4 flex items-center">
+                <svg width="24" height="24" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 8V6.5C20 5.12 18.88 4 17.5 4H6.5C5.12 4 4 5.12 4 6.5V8H2V9.5C2 10.33 2.67 11 3.5 11H4V18.5C4 19.88 5.12 21 6.5 21H17.5C18.88 21 20 19.88 20 18.5V11H20.5C21.33 11 22 10.33 22 9.5V8H20ZM6 6.5C6 6.22 6.22 6 6.5 6H17.5C17.78 6 18 6.22 18 6.5V8H6V6.5ZM18 18.5C18 18.78 17.78 19 17.5 19H6.5C6.22 19 6 18.78 6 18.5V11H18V18.5Z" fill="currentColor"/>
+                </svg>
+                
+                  Outlet yang tersedia
+              </h2>
+              <div class="grid grid-cols-3 gap-4 text-center">
+                  <span class="py-2 px-4 rounded-lg">
+                    <details>
+                      <summary>Semarang</summary>
+                      <p>Jl. Setia Budi No.68A, Sumurboto, Kec. Banyumanik, Kota Semarang, Jawa Tengah 50269<br>
+                        <a class="text-[#daa580]" href="https://maps.app.goo.gl/djpNjGLxHFP6fymDA">Lihat di map</a>
+                      </p>
+                    </details>
+                  </span>
+                  <span class="py-2 px-4 rounded-lg">
+                    <details>
+                      <summary>Kudus</summary>
+                      <p>Jl. Kenari No.43, Magersari, Wergu Kulon, Kec. Kota Kudus, Kabupaten Kudus, Jawa Tengah 59318<br>
+                        <a class="text-[#daa580]" href="https://maps.app.goo.gl/2pxtJ9yrz6CqH3g17">Lihat di map</a>
+                      </p>
+                    </details>
+                  </span>
+                  <span class="py-2 px-4 rounded-lg">
+                    <details>
+                      <summary>Pati</summary>
+                      <p>Jl. Dr. Setia Budi No.2B, Pati Kidul, Kec. Pati, Kabupaten Pati, Jawa Tengah 59114<br>
+                        <a class="text-[#daa580]" href="https://maps.app.goo.gl/4zW8CwjYoSfet99CA">Lihat di map</a>
+                      </p>
+                    </details>
+                  </span>
+              </div>
+          </div>
+      </div>
+      </section>
+      <section id="xpemesanan">
+        kbjb
+      </section>
+      <div
+        class="flex font-serif justify-center items-center w-full h-16 gap-2.5 px-2.5 py-5"
+      >
+        <p class="flex-grow-0 flex-shrink-0 text-xl text-center capitalize text-white">©156</p>
+      </div>
+    </div>
+    <script>
+      const carousel = document.querySelector('.carousel');
+      const carouselItems = document.querySelectorAll('.carousel-item');
+      const totalItems = carouselItems.length;
+      let currentIndex = 0;
+      let slideInterval; 
+
+      function showNextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      }
+
+      function showPrevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      function startAutoSlide() {
+        slideInterval = setInterval(showNextSlide, 5000); 
+      }
+
+      function stopAutoSlide() {
+        clearInterval(slideInterval);
+      }
+
+      startAutoSlide();
+
+      document.getElementById('nextButton').addEventListener('click', showNextSlide);
+      document.getElementById('prevButton').addEventListener('click', showPrevSlide);
+
+      carousel.addEventListener('mouseover', stopAutoSlide);
+      carousel.addEventListener('mouseout', startAutoSlide);
+    </script>
+</body>
+</html>
